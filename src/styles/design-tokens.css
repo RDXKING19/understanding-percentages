@@ -1,0 +1,56 @@
+/* ════════════════════════════════════════════
+   Understanding Percentages — Design Tokens
+   (same design system as the Grade 5 "Rounding
+   Decimals" and Grade 2 "Equal Groups" modules)
+   ════════════════════════════════════════════ */
+
+:root {
+  /* ── Core palette ── */
+  --color-bg: #0a0a2e;
+  --color-surface: rgba(30, 30, 100, 0.7);
+  --color-primary: #ffc107;     /* gold — CTAs, active states */
+  --color-secondary: #7c5cbf;   /* purple — secondary elements */
+  --color-accent: #4caf50;      /* green — correct answers */
+  --color-error: #ef5350;       /* red — wrong answers */
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.4);
+
+  /* ── Aliases used across components ── */
+  --gold: #ffc107;
+  --purple: #7c5cbf;
+  --purple-light: #9c7fd8;
+  --green: #4caf50;
+  --red: #ef5350;
+
+  /* ── World accents (10 worlds) ── */
+  --world-1: #ff7043;   /* Candy Land */
+  --world-2: #4caf50;   /* Jungle Trek */
+  --world-3: #0ea5e9;   /* Ocean Deep */
+  --world-4: #ffd54f;   /* Sky Islands */
+  --world-5: #ef5350;   /* Volcano Peak */
+  --world-6: #9c27b0;   /* Space Station */
+  --world-7: #ff5722;   /* Dragon Cave */
+  --world-8: #3f51b5;   /* Crystal Tower */
+  --world-9: #e91e63;   /* Rainbow Bridge */
+  --world-10: #00bcd4;  /* Number Palace */
+
+  /* ── Typography ── */
+  --font-display: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+
+  /* ── Radii ── */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-glow-gold: 0 0 24px rgba(255, 193, 7, 0.35);
+
+  /* ── Transitions ── */
+  --transition-fast: 0.18s ease;
+  --transition-base: 0.3s ease;
+  --transition-spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
