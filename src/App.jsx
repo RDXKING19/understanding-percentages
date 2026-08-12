@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import IntroScreen    from './components/IntroScreen.jsx';
 import PhaseNav       from './components/PhaseNav.jsx';
-import TopBar         from './components/TopBar.jsx';
 import FloatingSymbols from './components/FloatingSymbols.jsx';
 
 import WonderPhase   from './features/wonder/WonderPhase.jsx';
@@ -53,8 +52,14 @@ export default function App() {
   return (
     <div className="app-container">
       <FloatingSymbols />
-      <TopBar audioEnabled={audioEnabled} onToggleAudio={toggleAudio} onHome={goHome} showHome={phase !== 'intro'} />
-      <PhaseNav currentPhase={phase} onPhaseClick={go} />
+      <PhaseNav
+        currentPhase={phase}
+        onPhaseClick={go}
+        onHome={goHome}
+        showHome={phase !== 'intro'}
+        audioEnabled={audioEnabled}
+        onToggleAudio={toggleAudio}
+      />
 
       <AnimatePresence mode="wait">
         <motion.div

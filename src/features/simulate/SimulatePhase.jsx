@@ -48,16 +48,24 @@ export default function SimulatePhase({ onComplete, playNarration }) {
 
   if (showDone) {
     const totalScore = Object.values(stationScores).reduce((a, b) => a + b, 0);
+    const starCount = Math.min(Math.ceil(totalScore / 3), 9);
     return (
-      <div className="simulate-screen">
+      <div className="simulate-screen game-scale">
         <motion.div
           className="simulate-card glass-card sim-complete-card"
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
         >
-          <div style={{ fontSize: '2.6rem', marginBottom: 8, textAlign: 'center' }}>🏆</div>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', marginBottom: 4, textAlign: 'center' }}>All Stations Complete!</h2>
-          <p style={{ color: 'var(--color-text-muted)', marginBottom: 16, textAlign: 'center' }}>Total: {totalScore} / 9</p>
+          <div style={{ fontSize: '3.6rem', marginBottom: 8, textAlign: 'center' }}>🏆</div>
+          <div style={{ fontSize: '1.5rem', textAlign: 'center', marginBottom: 8 }}>
+            {'⭐'.repeat(starCount)}
+          </div>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'var(--gold)', marginBottom: 4, textAlign: 'center' }}>
+            All Stations Complete! 🎉
+          </h2>
+          <p style={{ color: 'var(--color-text-muted)', fontSize: '1rem', fontWeight: 700, marginBottom: 16, textAlign: 'center' }}>
+            Total: {totalScore} / 9
+          </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 18, width: '100%' }}>
             {STATIONS.map(s => (
               <div key={s.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)' }}>
@@ -78,9 +86,14 @@ export default function SimulatePhase({ onComplete, playNarration }) {
   const StationComponent = station.Component;
 
   return (
-    <div className="simulate-screen">
+    <div className="simulate-screen game-scale">
       {/* Tab bar — compact, won't overlap journey bar */}
-      <div className="station-selector">
+      <motion.div
+        className="station-selector"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         {STATIONS.map(s => (
           <button
             key={s.id}
@@ -89,10 +102,10 @@ export default function SimulatePhase({ onComplete, playNarration }) {
           >
             <span className="station-tab-icon">{s.icon}</span>
             <span className="station-tab-label">{s.title}</span>
-            {completed.has(s.id) && <span style={{ fontSize: '0.6rem', color: 'var(--green)' }}>✓</span>}
+            {completed.has(s.id) && <span className="station-done-tick">✓</span>}
           </button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Game card — scrollable internally if needed */}
       <AnimatePresence mode="wait">
@@ -104,10 +117,10 @@ export default function SimulatePhase({ onComplete, playNarration }) {
           className="simulate-card glass-card"
         >
           <div style={{ marginBottom: 12, flexShrink: 0 }}>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 700, marginBottom: 2 }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 700, marginBottom: 2 }}>
               {station.icon} {station.title}
             </h3>
-            <p style={{ color: 'var(--color-text-muted)', fontSize: '0.82rem' }}>{station.subtitle}</p>
+            <p style={{ color: 'var(--color-text-muted)', fontSize: '0.98rem' }}>{station.subtitle}</p>
           </div>
 
           {completed.has(activeStation) ? (

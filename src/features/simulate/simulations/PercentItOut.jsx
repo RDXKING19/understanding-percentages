@@ -62,6 +62,25 @@ export default function PercentItOut({ onComplete }) {
         <span className="ns-blank">{value || '?'}</span>
       </div>
 
+      {/* ── Live Feedback Label ── */}
+      <div
+        style={{
+          fontSize: '0.95rem',
+          fontWeight: 800,
+          textAlign: 'center',
+          transition: 'color 0.2s',
+          color: Number(value) === setup.answer ? 'var(--gold)' : value ? '#ff5252' : 'transparent',
+          minHeight: '1.4em',
+          margin: '4px 0 6px',
+        }}
+      >
+        {Number(value) === setup.answer
+          ? '✨ Matches the answer!'
+          : value
+          ? '🤔 Keep trying!'
+          : ' '}
+      </div>
+
       {/* ── Number pad (hidden after confirm) ── */}
       {!confirmed && <NumberPad value={value} onChange={setValue} onSubmit={handleSubmit} />}
 

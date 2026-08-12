@@ -129,8 +129,32 @@ body {
 .journey-step:hover { background: rgba(255,255,255,0.06); color: var(--color-text); }
 .journey-step.active { background: rgba(255,193,7,0.16); color: var(--gold); }
 .journey-step-icon  { font-size: 1.05rem; }
-.journey-step-label { font-size: 0.6rem; font-weight: 800; font-family: var(--font-display); letter-spacing: 0.04em; }
+.journey-step-label { font-size: 0.72rem; font-weight: 900; font-family: var(--font-display); letter-spacing: 0.04em; }
 .journey-connector  { width: 10px; height: 2px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+
+.journey-home-btn,
+.journey-volume-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--gold);
+  background: rgba(10,10,46,0.9);
+  color: var(--gold);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  backdrop-filter: blur(12px);
+  flex-shrink: 0;
+}
+.journey-home-btn { margin-right: 4px; }
+.journey-volume-btn { margin-left: 6px; }
+.journey-home-btn:hover,
+.journey-volume-btn:hover {
+  background: rgba(255,193,7,0.18);
+  transform: scale(1.08);
+}
 
 /* ════════════════════════════════════════════
    GLASS CARD
@@ -450,12 +474,22 @@ body {
 .wonder-emoji    { font-size: 2.8rem; margin-bottom: 8px; }
 .wonder-question {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.4;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.5;
   margin-bottom: 8px;
 }
-.wonder-subtext  { font-style: italic; color: var(--color-text-muted); font-size: 0.9rem; }
+.wonder-subtext  { font-style: italic; font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+
+@keyframes btnGlowPulse {
+  0%, 100% { box-shadow: 0 0 0px rgba(255,193,7,0); }
+  50% { box-shadow: 0 0 18px rgba(255,193,7,0.7); }
+}
+.btn-glow-pulse {
+  display: inline-block;
+  border-radius: var(--radius-pill);
+  animation: btnGlowPulse 1.8s ease-in-out infinite;
+}
 .wonder-discover {
   background: linear-gradient(135deg, rgba(255,193,7,0.15), rgba(255,112,67,0.1));
   border: 1px solid rgba(255, 193, 7, 0.3);
@@ -597,7 +631,23 @@ body {
   font-family: var(--font-display);
   white-space: nowrap;
 }
-.station-tab.active  { border-color: var(--gold); background: rgba(255,193,7,0.12); }
+@keyframes tabPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,193,7,0); }
+  50% { box-shadow: 0 0 0 6px rgba(255,193,7,0.22); }
+}
+.station-tab.active {
+  border-color: var(--gold);
+  background: rgba(255,193,7,0.12);
+  animation: tabPulse 2.4s ease-in-out infinite;
+}
+.station-done-tick {
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #00e676;
+  background: rgba(0,230,118,0.15);
+  border-radius: 50%;
+  padding: 1px 4px;
+}
 .station-tab .station-tab-icon  { font-size: 1.58rem; }
 .station-tab .station-tab-label { font-size: 0.94rem; font-weight: 700; }
 .simulate-card {
@@ -779,13 +829,17 @@ body {
 }
 .sim-instruction {
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1.18rem;
+  font-weight: 800;
+  font-size: 1.3rem;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
   margin-top: 2px;
   margin-bottom: 4px;
 }
+.game-scale .sim-instruction { font-size: 1.35rem; }
+.game-scale .btn { font-size: 1.28rem; font-weight: 800; }
+.game-scale .btn-sm { font-size: 1.1rem; font-weight: 800; }
 .sim-title {
   font-family: var(--font-display);
   font-weight: 700;

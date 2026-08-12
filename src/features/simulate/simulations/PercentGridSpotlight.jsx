@@ -53,6 +53,11 @@ export default function PercentGridSpotlight({ onComplete }) {
 
       <p className="sim-instruction">What percent of the grid is shaded?</p>
 
+      {/* ── Hint strip ── */}
+      <div style={{ fontSize: '0.9rem', fontWeight: 800, textAlign: 'center', color: 'var(--gold)', marginBottom: 8 }}>
+        🔍 Count every shaded square — each one equals 1%!
+      </div>
+
       {/* ── Diagram ── */}
       <PercentGrid percent={setup.percent} showCaption={false} />
 

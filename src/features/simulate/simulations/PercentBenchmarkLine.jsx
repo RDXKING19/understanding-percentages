@@ -66,6 +66,11 @@ export default function PercentBenchmarkLine({ onComplete }) {
         Round {setup.valueDisplay} to the nearest {setup.placeLabel}. Tap the benchmark it's closest to!
       </p>
 
+      {/* ── Hint strip ── */}
+      <div style={{ fontSize: '0.9rem', fontWeight: 800, textAlign: 'center', color: 'var(--gold)', marginBottom: 8 }}>
+        📏 Is it closer to the left or right benchmark? Tap your answer below!
+      </div>
+
       {/* ── Percent line ── */}
       <PercentLineDiagram
         lowerDisplay={setup.lowerDisplay}
